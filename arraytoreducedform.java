@@ -1,65 +1,66 @@
+
 import java.util.*;
 class ArrayToReducedForm
 {
 	/*Sorting array*/		
-	public static void SortCopyOfArrayToBeReduced(int CopyOfArrayToBeReduced[])
+	public static void sortCopyOfArrayToBeReduced(int copyOfArrayToBeReduced[])
 	{
-		int LengthOfCopyOfArrayToBeReduced = CopyOfArrayToBeReduced.length;
-		for(int index = 1; index < LengthOfCopyOfArrayToBeReduced; index++)
+		int lengthOfCopyOfArrayToBeReduced = copyOfArrayToBeReduced.length;
+		for(int index = 1; index < lengthOfCopyOfArrayToBeReduced; index++)
 		{
-			int CurrentElement = CopyOfArrayToBeReduced[index];
-			int PreviousIndex = index-1;
-			while(PreviousIndex > -1 && CopyOfArrayToBeReduced[PreviousIndex] > CurrentElement)
+			int currentElement = copyOfArrayToBeReduced[index];
+			int previousIndex = index-1;
+			while(previousIndex > -1 && copyOfArrayToBeReduced[previousIndex] > currentElement)
 			{
-				CopyOfArrayToBeReduced[PreviousIndex+1] = CopyOfArrayToBeReduced[PreviousIndex];
-				PreviousIndex--;
+				copyOfArrayToBeReduced[previousIndex+1] = copyOfArrayToBeReduced[previousIndex];
+				previousIndex--;
 			}
-			CopyOfArrayToBeReduced[PreviousIndex+1] = CurrentElement;
+			copyOfArrayToBeReduced[previousIndex+1] = currentElement;
 		}
 	}
 	/* Coverting the given array into reduced form*/
-	public static void ConvertToReducedForm(int ArrayToBeReduced[], int LengthOfArrayToBeReduced)
+	public static void convertToReducedForm(int arrayToBeReduced[], int lengthOfArrayToBeReduced)
 	{
 		/*Creating a copy of the original array*/
-		int CopyOfArrayToBeReduced[] = ArrayToBeReduced.clone();
-		SortCopyOfArrayToBeReduced(CopyOfArrayToBeReduced);
-		HashMap<Integer, Integer> ReducedElements = new HashMap<>();
-		int ReducedValue = 0;
-		for(int index = 0; index < LengthOfArrayToBeReduced; index++)
+		int copyOfArrayToBeReduced[] = arrayToBeReduced.clone();
+		sortCopyOfArrayToBeReduced(copyOfArrayToBeReduced);
+		HashMap<Integer, Integer> reducedElements = new HashMap<>();
+		int reducedValue = 0;
+		for(int index = 0; index < lengthOfArrayToBeReduced; index++)
 		{
-			ReducedElements.put(CopyOfArrayToBeReduced[index], ReducedValue++);
+			reducedElements.put(copyOfArrayToBeReduced[index], reducedValue++);
 		}
 		
-		for(int index = 0; index < LengthOfArrayToBeReduced; index++)
+		for(int index = 0; index < lengthOfArrayToBeReduced; index++)
 		{
-			ArrayToBeReduced[index] = ReducedElements.get(ArrayToBeReduced[index]);
+			arrayToBeReduced[index] = reducedElements.get(arrayToBeReduced[index]);
 		}
 	}
 	/*Printing the reduced array*/
-	public static void PrintArray(int ReducedArray[], int LengthOfReducedArray)
+	public static void printArray(int reducedArray[], int lengthOfReducedArray)
     	{	
-        	for (int index = 0; index < LengthOfReducedArray; index++)
+        	for (int index = 0; index < lengthOfReducedArray; index++)
         	{
-            		System.out.print(ReducedArray[index] + " ");
+            		System.out.print(reducedArray[index] + " ");
             	}
     	}
 	
 	public static void main(String args[])
 	{
-		Scanner TakeInput = new Scanner(System.in);
+		Scanner takeInput = new Scanner(System.in);
 		System.out.print("Enter the length of array to be reduced: ");
-		int LengthOfArrayToBeReduced = TakeInput.nextInt();
-		int ArrayToBeReduced[] = new int[LengthOfArrayToBeReduced];
+		int lengthOfArrayToBeReduced = takeInput.nextInt();
+		int arrayToBeReduced[] = new int[lengthOfArrayToBeReduced];
 		System.out.println("Enter the array elements");
-		for(int index=0; index < LengthOfArrayToBeReduced; index++)
+		for(int index=0; index < lengthOfArrayToBeReduced; index++)
 		{
-			ArrayToBeReduced[index] = TakeInput.nextInt();
+			arrayToBeReduced[index] = takeInput.nextInt();
 		}
 		System.out.println("Given Array is ");
-        	PrintArray(ArrayToBeReduced, LengthOfArrayToBeReduced);
-        	ConvertToReducedForm(ArrayToBeReduced, LengthOfArrayToBeReduced);
+        	printArray(arrayToBeReduced, lengthOfArrayToBeReduced);
+        	convertToReducedForm(arrayToBeReduced, lengthOfArrayToBeReduced);
         	System.out.println();
         	System.out.println("Reduced Array is ");
-        	PrintArray(ArrayToBeReduced, LengthOfArrayToBeReduced);
+        	printArray(arrayToBeReduced, lengthOfArrayToBeReduced);
 	}
 }
