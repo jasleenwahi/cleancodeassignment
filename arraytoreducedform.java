@@ -24,6 +24,7 @@ class ArrayToReducedForm
 		/*Creating a copy of the original array*/
 		int copyOfArrayToBeReduced[] = arrayToBeReduced.clone();
 		sortCopyOfArrayToBeReduced(copyOfArrayToBeReduced);
+		/* I have created an hashmap to store elements along with their index*/
 		HashMap<Integer, Integer> reducedElements = new HashMap<>();
 		int reducedValue = 0;
 		for(int index = 0; index < lengthOfArrayToBeReduced; index++)
