@@ -1,7 +1,7 @@
 import java.util.*;
 class ArrayToReducedForm
 {
-		
+	/*Sorting array*/		
 	public static void SortCopyOfArrayToBeReduced(int CopyOfArrayToBeReduced[])
 	{
 		int LengthOfCopyOfArrayToBeReduced = CopyOfArrayToBeReduced.length;
@@ -17,9 +17,10 @@ class ArrayToReducedForm
 			CopyOfArrayToBeReduced[PreviousIndex+1] = CurrentElement;
 		}
 	}
-	
+	/* Coverting the given array into reduced form*/
 	public static void ConvertToReducedForm(int ArrayToBeReduced[], int LengthOfArrayToBeReduced)
 	{
+		/*Creating a copy of the original array*/
 		int CopyOfArrayToBeReduced[] = ArrayToBeReduced.clone();
 		SortCopyOfArrayToBeReduced(CopyOfArrayToBeReduced);
 		HashMap<Integer, Integer> ReducedElements = new HashMap<>();
@@ -34,7 +35,7 @@ class ArrayToReducedForm
 			ArrayToBeReduced[index] = ReducedElements.get(ArrayToBeReduced[index]);
 		}
 	}
-	
+	/*Printing the reduced array*/
 	public static void PrintArray(int ReducedArray[], int LengthOfReducedArray)
     	{	
         	for (int index = 0; index < LengthOfReducedArray; index++)
